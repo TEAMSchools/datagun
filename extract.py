@@ -9,6 +9,8 @@ import pandas as pd
 import sqlalchemy as sa
 from dotenv import load_dotenv
 
+from datarobot.utilities import email
+
 load_dotenv()
 
 DB_TYPE = os.getenv("DB_TYPE")
@@ -53,6 +55,10 @@ def main(config):
             print("\t\tFailure!")
             print(xc)
             print(traceback.format_exc())
+            email.send_email(
+                subject=f"{config_name} extract error",
+                body=f"{xc}\n\n{traceback.format_exc()}",
+            )
             continue
 
         data_path = PROJECT_PATH / "data"
@@ -84,4 +90,7 @@ if __name__ == "__main__":
     except Exception as xc:
         print(xc)
         print(traceback.format_exc())
-        
+        email.send_email(
+            subject=f"{args.config} extract error",
+            body=f"{xc}\n\n{traceback.format_exc()}",
+        )
