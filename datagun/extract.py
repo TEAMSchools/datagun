@@ -7,11 +7,8 @@ import traceback
 
 import pandas as pd
 import sqlalchemy as sa
-from dotenv import load_dotenv
 
 from datarobot.utilities import email
-
-load_dotenv()
 
 DB_TYPE = os.getenv("DB_TYPE")
 DB_API = os.getenv("DB_API")
@@ -32,8 +29,9 @@ def main(config):
     else:
         raise Exception("Missing argument: --config /path/to/config.json")
 
-    db_conn_string = f"{DB_TYPE}+{DB_API}://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-    db_engine = sa.create_engine(db_conn_string)
+    db_engine = sa.create_engine(
+        f"{DB_TYPE}+{DB_API}://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    )
 
     print("Extracting from database...")
 
