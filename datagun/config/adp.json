@@ -1,0 +1,14 @@
+[
+    {
+        "query": "SELECT * FROM extracts.adp_workers",
+        "output": {
+            "file": {
+                "name": "adp_workers",
+                "extension": "json",
+                "options": {
+                    "orient": "records"
+                }
+            }
+        }
+    }
+]

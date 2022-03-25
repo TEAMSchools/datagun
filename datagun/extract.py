@@ -57,7 +57,7 @@ def main(config):
             )
             continue
 
-        data_path = PROJECT_PATH / "data"
+        data_path = PROJECT_PATH / "datagun" / "data"
         file_name = q["output"]["file"].get("name")
         file_extension = q["output"]["file"]["extension"]
         file_path = data_path / config_name / f"{file_name}.{file_extension}"

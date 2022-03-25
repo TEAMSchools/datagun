@@ -1,0 +1,14 @@
+[
+    {
+        "query": "SELECT * FROM extracts.surveygizmo_contacts",
+        "output": {
+            "file": {
+                "name": "surveygizmo_contacts",
+                "extension": "json",
+                "options": {
+                    "orient": "records"
+                }
+            }
+        }
+    }
+]
